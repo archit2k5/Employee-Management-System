@@ -1,0 +1,301 @@
+/* ===========================
+   Employee Header
+=========================== */
+
+.employee-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+/* ===========================
+   Add Employee Button
+=========================== */
+
+.add-btn{
+    background:#3B82F6;
+    color:white;
+    border:none;
+    padding:12px 22px;
+    border-radius:12px;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.add-btn:hover{
+    background:#2563EB;
+}
+
+/* ===========================
+   Search Section
+=========================== */
+
+.employee-search{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:20px;
+
+    background:#182235;
+
+    border:1px solid #26344d;
+
+    border-radius:18px;
+
+    padding:18px;
+
+    margin-bottom:25px;
+
+}
+
+/* Search Box */
+
+.search-box{
+
+    flex:1;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    background:#202C42;
+
+    border:1px solid #2C3C57;
+
+    border-radius:12px;
+
+    padding:0 16px;
+
+    height:50px;
+
+}
+
+.search-icon{
+
+    color:#7B8CA8;
+
+    font-size:20px;
+
+}
+
+.search-box input{
+
+    flex:1;
+
+    background:none;
+
+    border:none;
+
+    outline:none;
+
+    color:white;
+
+    font-size:15px;
+
+}
+
+.search-box input::placeholder{
+
+    color:#7B8CA8;
+
+}
+
+/* Buttons */
+
+.search-actions{
+
+    display:flex;
+
+    gap:15px;
+
+}
+
+.action-btn{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    background:#202C42;
+
+    color:white;
+
+    border:1px solid #2C3C57;
+
+    border-radius:12px;
+
+    padding:0 22px;
+
+    height:50px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    font-size:15px;
+
+}
+
+.action-btn:hover{
+
+    background:#2A3A58;
+
+    border-color:#3B82F6;
+
+}
+/* ================= Table ================= */
+
+.employee-table{
+
+background:#182235;
+
+border:1px solid #26344d;
+
+border-radius:18px;
+
+overflow:hidden;
+
+}
+
+.table-header{
+
+display:grid;
+
+grid-template-columns: 3fr 1.2fr 1.6fr 1.8fr 1.3fr 1fr 1fr;
+padding:20px 28px;
+
+color:#7b8ca8;
+
+font-size:14px;
+
+border-bottom:1px solid #26344d;
+
+}
+
+.table-row{
+
+display:grid;
+
+grid-template-columns: 3fr 1.2fr 1.6fr 1.8fr 1.3fr 1fr 1fr;
+padding:20px 28px;
+
+align-items:center;
+
+border-bottom:1px solid #26344d;
+
+transition:.3s;
+
+}
+
+.table-row:hover{
+
+background:#1d2940;
+
+}
+
+.employee-info{
+
+display:flex;
+
+align-items:center;
+
+gap:18px;
+
+}
+
+.avatar{
+
+width:46px;
+
+height:46px;
+
+border-radius:50%;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-weight:700;
+
+color:white;
+
+}
+
+.employee-info h4{
+
+color:white;
+
+font-size:18px;
+
+margin:0;
+
+}
+
+.employee-info p{
+
+color:#7b8ca8;
+
+margin-top:4px;
+
+font-size:14px;
+
+}
+
+.table-row>div{
+
+color:white;
+
+}
+
+.status{
+
+font-size:15px;
+
+font-weight:600;
+
+}
+
+.status.active{
+
+color:#10B981;
+
+}
+
+.status.leave{
+
+color:#FBBF24;
+
+}
+
+.actions{
+
+display:flex;
+
+gap:22px;
+
+font-size:18px;
+
+color:#7b8ca8;
+
+cursor:pointer;
+
+}
+
+.actions svg:hover{
+
+color:#3B82F6;
+
+}

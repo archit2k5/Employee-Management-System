@@ -1,20 +1,32 @@
 import "./dashboard.css";
 
-const StatCard = ({ title, value, subtitle, icon }) => {
+const StatCard = ({
+  title,
+  value,
+  subtitle,
+  icon,
+  iconBg,
+  iconColor,
+}) => {
   return (
     <div className="stat-card">
-
       <div className="card-header">
-        <p>{title}</p>
-        <div className="card-icon">
+        <div>
+          <p>{title}</p>
+          <h2>{value}</h2>
+          <span>{subtitle}</span>
+        </div>
+
+        <div
+          className="card-icon"
+          style={{
+            background: iconBg,
+            color: iconColor,
+          }}
+        >
           {icon}
         </div>
       </div>
-
-      <h2>{value}</h2>
-
-      <span>{subtitle}</span>
-
     </div>
   );
 };

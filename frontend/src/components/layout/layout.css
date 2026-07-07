@@ -62,8 +62,10 @@ nav{
 }
 
 .main-content{
-    margin-left:250px;
-    width:calc(100% - 250px);
+    width:calc(100% - 235px);
+    margin-left:235px;
+    background:#0B1220;
+    min-height:100vh;
 }
 
 .navbar{
@@ -158,5 +160,5 @@ nav{
 }
 
 .page-content{
-    padding:30px;
+    padding:35px;
 }

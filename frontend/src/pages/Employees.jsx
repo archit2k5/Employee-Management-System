@@ -1,5 +1,16 @@
-function Employees() {
-  return <h1>Employees</h1>;
-}
+<>
+  <div className="page-header">
+      <div>
+          <h1>Employee Management</h1>
+          <p>View and manage all employees</p>
+      </div>
 
-export default Employees;
+      <button className="add-btn">
+          + Add Employee
+      </button>
+  </div>
+
+  <EmployeeSearch />
+
+  <EmployeeTable />
+</>

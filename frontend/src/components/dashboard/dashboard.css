@@ -1,0 +1,359 @@
+
+
+.page-header{
+    margin-bottom:30px;
+}
+
+.page-header h1{
+    color:#ffffff;
+    font-size:38px;
+    font-weight:700;
+    margin-bottom:8px;
+}
+
+.page-header p{
+    color:#7b8ca8;
+    font-size:17px;
+}
+
+
+
+.stats-grid{
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:20px;
+
+margin-bottom:30px;
+
+}
+
+
+.stat-card{
+
+    background:#182334;
+    border:1px solid #25344f;
+    border-radius:18px;
+    padding:22px;
+    min-height:170px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    transition:0.3s ease;
+
+}
+
+.stat-card:hover{
+
+   transform:translateY(-4px);
+    border-color:#3B82F6;
+}
+
+.card-header{
+
+      display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+
+
+}
+
+.card-header p{
+
+color:#7E91B0;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:1px;
+
+}
+
+.card-icon{
+
+    width:52px;
+    height:52px;
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:22px;
+
+}
+
+.stat-card h2{
+  font-size:34px;
+    color:white;
+    margin:18px 0 8px;
+
+}
+
+.stat-card span{
+
+    color:#8FA1BF;
+    font-size:14px;
+
+}
+.charts-grid{
+
+display:grid;
+
+grid-template-columns:2fr 1fr;
+
+gap:20px;
+
+margin-top:25px;
+}
+
+.chart-card{
+
+background:#182235;
+
+border:1px solid #26344d;
+
+border-radius:18px;
+
+padding:22px;
+
+height:420px;
+
+}
+
+.chart-card h3{
+    color:#fff;
+    margin-bottom:15px;
+
+}
+.chart-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+}
+
+.chart-header h3{
+    color:white;
+    font-size:18px;
+    font-weight:600;
+}
+
+.chart-btn{
+    background:#22314D;
+    color:#C7D2FE;
+    border:none;
+    padding:8px 14px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:13px;
+}
+
+.chart-btn:hover{
+    background:#304564;
+}
+.department-wrapper{
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+margin-top:15px;
+
+}
+
+.pie-wrapper{
+
+width:240px;
+
+height:240px;
+
+position:relative;
+
+}
+
+.pie-center{
+
+position:absolute;
+
+top:50%;
+
+left:50%;
+
+transform:translate(-50%,-50%);
+
+text-align:center;
+
+}
+
+.pie-center h2{
+
+color:white;
+
+font-size:28px;
+
+}
+
+.pie-center p{
+
+color:#94A3B8;
+
+font-size:14px;
+
+}
+
+.department-legend{
+
+flex:1;
+
+display:flex;
+
+flex-direction:column;
+
+gap:16px;
+
+padding-left:15px;
+
+}
+
+.legend-item{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+}
+
+.legend-left{
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+}
+
+.legend-dot{
+
+width:12px;
+
+height:12px;
+
+border-radius:50%;
+
+}
+
+.legend-item span{
+
+color:#CBD5E1;
+
+font-size:14px;
+
+}
+
+.legend-item strong{
+
+color:white;
+
+font-size:14px;
+
+}
+/* Pending Leaves Section */
+.pending-card{
+    margin-top:25px;
+    background:#182235;
+    border:1px solid #26344d;
+    border-radius:18px;
+    padding:22px;
+}
+
+.pending-card h3{
+    color:#fff;
+    font-size:20px;
+    margin-bottom:20px;
+}
+
+.leave-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#202C42;
+    border-radius:14px;
+    padding:16px 18px;
+    margin-bottom:14px;
+    transition:0.3s ease;
+}
+
+.leave-item:hover{
+    background:#24324B;
+}
+
+.leave-left{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.avatar{
+    width:52px;
+    height:52px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#fff;
+    font-weight:600;
+    font-size:18px;
+    flex-shrink:0;
+}
+
+.leave-info h4{
+    color:#fff;
+    margin-bottom:5px;
+    font-size:18px;
+}
+
+.leave-info p{
+    color:#8FA1BF;
+    font-size:14px;
+}
+
+.leave-actions{
+    display:flex;
+    gap:12px;
+}
+
+.approve-btn,
+.reject-btn{
+    width:42px;
+    height:42px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:18px;
+    transition:0.3s;
+}
+
+.approve-btn{
+    background:#0F766E;
+    color:#22C55E;
+}
+
+.approve-btn:hover{
+    background:#115E59;
+}
+
+.reject-btn{
+    background:#4B1D29;
+    color:#F87171;
+}
+
+.reject-btn:hover{
+    background:#6B2233;
+}

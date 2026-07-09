@@ -1,0 +1,130 @@
+.review-card{
+
+margin-top:25px;
+
+background:#182235;
+
+border:1px solid #26344d;
+
+border-radius:18px;
+
+overflow:hidden;
+
+}
+
+.review-card h3{
+
+padding:22px;
+
+color:white;
+
+font-size:24px;
+
+border-bottom:1px solid #26344d;
+
+}
+
+.review-table{
+
+width:100%;
+
+border-collapse:collapse;
+
+}
+
+.review-table th{
+
+padding:18px;
+
+text-align:left;
+
+color:#8ea2c6;
+
+font-weight:500;
+
+}
+
+.review-table td{
+
+padding:18px;
+
+border-top:1px solid #26344d;
+
+color:white;
+
+}
+
+.employee-cell{
+
+display:flex;
+
+align-items:center;
+
+gap:14px;
+
+}
+
+.avatar{
+
+width:36px;
+
+height:36px;
+
+border-radius:50%;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:13px;
+
+font-weight:700;
+
+color:white;
+
+}
+
+.status-pill{
+
+padding:6px 16px;
+
+border-radius:18px;
+
+font-size:14px;
+
+font-weight:600;
+
+}
+
+.completed{
+
+background:#10383d;
+
+color:#12e0b4;
+
+}
+
+.pending{
+
+background:#46340d;
+
+color:#ffc107;
+
+}
+.chart-card{
+    background:#182235;
+    border:1px solid #26344d;
+    border-radius:18px;
+    padding:22px;
+    margin-top:25px;
+    height:420px;
+}
+
+.chart-card h3{
+    color:#fff;
+    margin-bottom:15px;
+    font-size:24px;
+    font-weight:600;
+}

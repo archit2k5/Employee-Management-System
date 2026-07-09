@@ -6,6 +6,8 @@ import {
   FiBriefcase,
   FiGrid,
   FiTrendingUp,
+   FiLayers,
+  FiMenu,
 } from "react-icons/fi";
 
 import "./layout.css";
@@ -13,43 +15,94 @@ import "./layout.css";
 const Sidebar = () => {
   return (
     <aside className="sidebar">
-      <div className="logo">
-        <h2>Nexus HR</h2>
-      </div>
 
-      <p className="portal-title">HR PORTAL</p>
+      {/* Logo */}
+
+   <div className="logo">
+
+  <div className="logo-icon">
+    <FiLayers />
+  </div>
+
+  <div className="logo-text">
+    <h2>Nexus HR</h2>
+  </div>
+
+  <button className="menu-toggle">
+    <FiMenu />
+  </button>
+
+</div>
+
+<p className="portal-title">HR PORTAL</p>
+
+      {/* Navigation */}
 
       <nav>
-        <NavLink to="/" className="menu-item">
+
+        <NavLink
+          to="/"
+          end
+          className={({ isActive }) =>
+            isActive ? "menu-item active" : "menu-item"
+          }
+        >
           <FiHome />
           <span>Overview</span>
         </NavLink>
 
-        <NavLink to="/employees" className="menu-item">
+        <NavLink
+          to="/employees"
+          className={({ isActive }) =>
+            isActive ? "menu-item active" : "menu-item"
+          }
+        >
           <FiUsers />
           <span>Employees</span>
         </NavLink>
 
-        <NavLink to="/leave" className="menu-item">
+        <NavLink
+          to="/leave"
+          className={({ isActive }) =>
+            isActive ? "menu-item active" : "menu-item"
+          }
+        >
           <FiCalendar />
           <span>Leave Approval</span>
         </NavLink>
 
-        <NavLink to="/recruitment" className="menu-item">
+        <NavLink
+          to="/recruitment"
+          className={({ isActive }) =>
+            isActive ? "menu-item active" : "menu-item"
+          }
+        >
           <FiBriefcase />
           <span>Recruitment</span>
         </NavLink>
 
-        <NavLink to="/departments" className="menu-item">
+        <NavLink
+          to="/departments"
+          className={({ isActive }) =>
+            isActive ? "menu-item active" : "menu-item"
+          }
+        >
           <FiGrid />
           <span>Departments</span>
         </NavLink>
 
-        <NavLink to="/performance" className="menu-item">
+        <NavLink
+          to="/performance"
+          className={({ isActive }) =>
+            isActive ? "menu-item active" : "menu-item"
+          }
+        >
           <FiTrendingUp />
           <span>Performance</span>
         </NavLink>
+
       </nav>
+
     </aside>
   );
 };

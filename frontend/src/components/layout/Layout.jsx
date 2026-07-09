@@ -1,6 +1,6 @@
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
-
+import "./layout.css";
 const Layout = ({ children }) => {
   return (
     <div className="app-layout">
@@ -11,9 +11,9 @@ const Layout = ({ children }) => {
 
         <Navbar />
 
-        <div className="page-content">
+        <main className="page-content">
           {children}
-        </div>
+        </main>
 
       </div>
 

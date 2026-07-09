@@ -1,0 +1,21 @@
+.piechart-svg {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.piechart-slice {
+  stroke: var(--bg-card);
+  stroke-width: 2;
+  transition: opacity 0.15s ease;
+}
+.piechart-slice:hover {
+  opacity: 0.85;
+}
+
+.piechart-label {
+  font-size: 13px;
+  font-weight: 600;
+}

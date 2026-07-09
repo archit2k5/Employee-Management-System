@@ -1,0 +1,86 @@
+.salary-table-card {
+  padding: 20px;
+}
+
+.salary-table-scroll {
+  overflow-x: auto;
+}
+
+.salary-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 640px;
+}
+
+.salary-table thead th {
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  padding: 12px 8px;
+  border-bottom: 1px solid var(--border-subtle);
+  white-space: nowrap;
+}
+
+.salary-table tbody td {
+  padding: 14px 8px;
+  border-bottom: 1px solid var(--border-subtle);
+  font-size: 14px;
+}
+
+.salary-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.salary-table-dept {
+  font-weight: 600;
+}
+
+.salary-table-muted {
+  color: var(--text-secondary);
+}
+
+.payroll-history-card {
+  padding: 20px;
+  margin-top: 16px;
+}
+
+.payroll-history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.payroll-history-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  flex-wrap: wrap;
+}
+
+.payroll-history-period {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.payroll-history-meta {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.payroll-history-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.payroll-history-amount {
+  font-size: 15px;
+  font-weight: 700;
+}

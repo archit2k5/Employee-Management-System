@@ -1,0 +1,57 @@
+.linechart {
+  position: relative;
+  width: 100%;
+}
+
+.linechart-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.linechart-grid {
+  stroke: var(--border-subtle);
+  stroke-dasharray: 3 4;
+}
+
+.linechart-cursor {
+  stroke: var(--border-strong);
+  stroke-width: 1;
+}
+
+.linechart-dot {
+  fill: var(--bg-card);
+  stroke: var(--accent-blue);
+  stroke-width: 2;
+  cursor: pointer;
+}
+
+.linechart-ytick,
+.linechart-xtick {
+  fill: var(--text-muted);
+  font-size: 11px;
+}
+
+.linechart-tooltip {
+  position: absolute;
+  transform: translate(-50%, -115%);
+  background: var(--bg-card-hover);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
+  font-size: 12px;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.linechart-tooltip-label {
+  color: var(--text-secondary);
+  margin-bottom: 2px;
+}
+
+.linechart-tooltip-value {
+  color: var(--text-primary);
+  font-weight: 600;
+}

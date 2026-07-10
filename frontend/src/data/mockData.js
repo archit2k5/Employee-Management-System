@@ -12,21 +12,74 @@ export const analyticsStats = [
 ];
 
 export const employeeGrowth = [
-  { label: "Feb", value: 96 },
-  { label: "Mar", value: 99 },
-  { label: "Apr", value: 101 },
-  { label: "May", value: 103 },
-  { label: "Jun", value: 105 },
-  { label: "Jul", value: 108 },
+  {
+    label: "Feb",
+    headcount: 100,
+    hires: 4,
+    exits: 2,
+  },
+  {
+    label: "Mar",
+    headcount: 102,
+    hires: 5,
+    exits: 3,
+  },
+  {
+    label: "Apr",
+    headcount: 104,
+    hires: 6,
+    exits: 4,
+  },
+  {
+    label: "May",
+    headcount: 106,
+    hires: 4,
+    exits: 2,
+  },
+  {
+    label: "Jun",
+    headcount: 108,
+    hires: 5,
+    exits: 3,
+  },
+  {
+    label: "Jul",
+    headcount: 110,
+    hires: 6,
+    exits: 4,
+  },
 ];
-
 export const payrollCostTrend = [
-  { label: "Feb", value: 9.6 },
-  { label: "Mar", value: 9.9 },
-  { label: "Apr", value: 10.1 },
-  { label: "May", value: 10.4 },
-  { label: "Jun", value: 10.7 },
-  { label: "Jul", value: 10.8 },
+  {
+    label: "Feb",
+    payroll: 9.8,
+    benefits: 2.9,
+  },
+  {
+    label: "Mar",
+    payroll: 10.1,
+    benefits: 3.0,
+  },
+  {
+    label: "Apr",
+    payroll: 10.2,
+    benefits: 3.1,
+  },
+  {
+    label: "May",
+    payroll: 10.4,
+    benefits: 3.2,
+  },
+  {
+    label: "Jun",
+    payroll: 10.6,
+    benefits: 3.2,
+  },
+  {
+    label: "Jul",
+    payroll: 10.8,
+    benefits: 3.3,
+  },
 ];
 
 export const systemHealth = [

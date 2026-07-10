@@ -1,105 +1,214 @@
-import { useState } from "react";
 import "./LineChart.css";
+import {
+  ResponsiveContainer,
+  ComposedChart,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Bar,
+  Line,
+} from "recharts";
+function CustomTooltip({ active, payload, label }) {
+  if (!active || !payload || payload.length === 0) return null;
 
-/**
- * Simple responsive line chart.
- * data: [{ label, value, highlight?, tooltip? }]
- * yTicks: array of numbers to show on left axis (top to bottom)
- */
-export default function LineChart({ data, yTicks, height = 220, color = "var(--accent-blue)", valueFormatter }) {
-  const [hoverIdx, setHoverIdx] = useState(null);
+  const isEmployeeChart = payload.some(
+    (item) => item.dataKey === "headcount"
+  );
 
-  const width = 600;
-  const padding = { top: 10, right: 10, bottom: 24, left: 36 };
-  const innerW = width - padding.left - padding.right;
-  const innerH = height - padding.top - padding.bottom;
+  let orderedPayload = [];
 
-  const maxTick = Math.max(...yTicks);
-  const minTick = Math.min(...yTicks);
+  if (isEmployeeChart) {
+    const order = {
+      headcount: 0,
+      hires: 1,
+      exits: 2,
+    };
 
-  const xStep = innerW / (data.length - 1);
-  const yFor = (v) => padding.top + innerH - ((v - minTick) / (maxTick - minTick)) * innerH;
-  const xFor = (i) => padding.left + i * xStep;
+    orderedPayload = [...payload].sort(
+      (a, b) => order[a.dataKey] - order[b.dataKey]
+    );
+  } else {
+    const order = {
+      payroll: 0,
+      benefits: 1,
+    };
 
-  const points = data.map((d, i) => `${xFor(i)},${yFor(d.value)}`).join(" ");
-  const areaPoints = `${padding.left},${padding.top + innerH} ${points} ${padding.left + innerW},${padding.top + innerH}`;
+    orderedPayload = [...payload].sort(
+      (a, b) => order[a.dataKey] - order[b.dataKey]
+    );
+  }
 
-  const activeIdx = hoverIdx ?? data.findIndex((d) => d.highlight);
+  return (
+    <div className="custom-tooltip">
+      <h4>{label}</h4>
+
+      {orderedPayload.map((item) => (
+        <p
+          key={item.dataKey}
+          style={{
+            color: item.color,
+            margin: "6px 0",
+            fontWeight: 600,
+          }}
+        >
+          {item.name}:{" "}
+          {isEmployeeChart
+            ? item.value
+            : `$${item.value}M`}
+        </p>
+      ))}
+    </div>
+  );
+}
+
+export default function LineChart({ data }) {
+  if (!data || data.length === 0) return null;
+
+  // Detect which chart to draw
+  const isEmployeeChart = "headcount" in data[0];
 
   return (
     <div className="linechart">
-      <svg viewBox={`0 0 ${width} ${height}`} className="linechart-svg" preserveAspectRatio="none">
-        {/* grid lines */}
-        {yTicks.map((t) => (
-          <line
-            key={t}
-            x1={padding.left}
-            x2={width - padding.right}
-            y1={yFor(t)}
-            y2={yFor(t)}
-            className="linechart-grid"
-          />
-        ))}
-
-        <defs>
-          <linearGradient id="lineFill" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor={color} stopOpacity="0.35" />
-            <stop offset="100%" stopColor={color} stopOpacity="0" />
-          </linearGradient>
-        </defs>
-
-        <polygon points={areaPoints} fill="url(#lineFill)" stroke="none" />
-        <polyline points={points} fill="none" stroke={color} strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" />
-
-        {activeIdx >= 0 && (
-          <line
-            x1={xFor(activeIdx)}
-            x2={xFor(activeIdx)}
-            y1={padding.top}
-            y2={padding.top + innerH}
-            className="linechart-cursor"
-          />
-        )}
-
-        {data.map((d, i) => (
-          <circle
-            key={d.label}
-            cx={xFor(i)}
-            cy={yFor(d.value)}
-            r={i === activeIdx ? 5 : 3.5}
-            className="linechart-dot"
-            onMouseEnter={() => setHoverIdx(i)}
-            onMouseLeave={() => setHoverIdx(null)}
-          />
-        ))}
-
-        {yTicks.map((t) => (
-          <text key={t} x={padding.left - 8} y={yFor(t) + 4} className="linechart-ytick" textAnchor="end">
-            {valueFormatter ? valueFormatter(t) : t}
-          </text>
-        ))}
-
-        {data.map((d, i) => (
-          <text key={d.label} x={xFor(i)} y={height - 4} className="linechart-xtick" textAnchor="middle">
-            {d.label}
-          </text>
-        ))}
-      </svg>
-
-      {activeIdx >= 0 && (
-        <div
-          className="linechart-tooltip"
-          style={{
-            left: `${(xFor(activeIdx) / width) * 100}%`,
-            top: `${(yFor(data[activeIdx].value) / height) * 100}%`,
+      <ResponsiveContainer width="100%" height={300}>
+        <ComposedChart
+          data={data}
+          margin={{
+            top: 10,
+            right: 20,
+            left: 10,
+            bottom: 10,
           }}
         >
-          <div className="linechart-tooltip-label">{data[activeIdx].label}</div>
-          <div className="linechart-tooltip-value">
-            {data[activeIdx].tooltip || `Total : ${data[activeIdx].value}`}
-          </div>
-        </div>
-      )}
+          <CartesianGrid
+            stroke="#24344d"
+            strokeDasharray="3 3"
+          />
+
+          <XAxis
+            dataKey="label"
+            stroke="#7c8db5"
+            tickLine={false}
+            axisLine={false}
+          />
+
+          {isEmployeeChart ? (
+            <>
+              {/* LEFT AXIS */}
+              <YAxis
+                yAxisId="left"
+                domain={[0, 120]}
+                ticks={[0, 30, 60, 90, 120]}
+                stroke="#7c8db5"
+                tickLine={false}
+                axisLine={false}
+              />
+
+              {/* RIGHT AXIS */}
+              <YAxis
+                yAxisId="right"
+                orientation="right"
+                domain={[0, 8]}
+                ticks={[0, 2, 4, 6, 8]}
+                stroke="#7c8db5"
+                tickLine={false}
+                axisLine={false}
+              />
+            </>
+          ) : (
+            <YAxis
+              domain={[0, 12]}
+              ticks={[0, 3, 6, 9, 12]}
+               tickFormatter={(value) => `$${value}M`}
+              stroke="#7c8db5"
+               tick={{ fill: "#7c8db5", fontSize: 13 }}
+              tickLine={false}
+              axisLine={false}
+            />
+          )}
+
+          <Tooltip
+            content={<CustomTooltip />}
+            
+            cursor={{
+              stroke: "#9fb8ff",
+              strokeWidth: 2,
+            }}
+          />
+
+          {/* ================= EMPLOYEE GROWTH ================= */}
+
+          {isEmployeeChart && (
+            <>
+              <Bar
+                yAxisId="right"
+                dataKey="hires"
+                name="Hires"
+                fill="#4ADE80"
+                radius={[4, 4, 0, 0]}
+                barSize={12}
+              />
+
+              <Bar
+                yAxisId="right"
+                dataKey="exits"
+                name="Exits"
+                fill="#EF4444"
+                radius={[4, 4, 0, 0]}
+                barSize={12}
+              />
+
+              <Line
+                yAxisId="left"
+                type="monotone"
+                dataKey="headcount"
+                name="Headcount"
+                stroke="#4F8DFF"
+                strokeWidth={3}
+                dot={false}
+                activeDot={{
+                  r: 6,
+                  fill: "#fff",
+                  stroke: "#4F8DFF",
+                  strokeWidth: 3,
+                }}
+              />
+            </>
+          )}
+
+          {/* ================= PAYROLL COST ================= */}
+
+          {!isEmployeeChart && (
+            <>
+              <Line
+                type="monotone"
+                dataKey="payroll"
+                name="Payroll"
+                stroke="#22D3EE"
+                strokeWidth={3}
+                dot={false}
+                activeDot={{
+                  r: 6,
+                  fill: "#fff",
+                }}
+              />
+
+              <Line
+                type="monotone"
+                dataKey="benefits"
+                name="Benefits"
+                stroke="#A855F7"
+                strokeWidth={3}
+                dot={false}
+                activeDot={{
+                  r: 6,
+                  fill: "#fff",
+                }}
+              />
+            </>
+          )}
+        </ComposedChart>
+      </ResponsiveContainer>
     </div>
   );
 }

@@ -29,16 +29,13 @@ export default function AnalyticsPage() {
       <div className="analytics-charts">
         <div className="card chart-card">
           <h3 className="chart-card-title">Employee Growth — 2024</h3>
-          <LineChart data={employeeGrowth} yTicks={[0, 30, 60, 90, 120]} />
+         <LineChart data={employeeGrowth} />
         </div>
         <div className="card chart-card">
-          <h3 className="chart-card-title">Payroll Cost ($M) — 2024</h3>
-          <LineChart
-            data={payrollCostTrend}
-            yTicks={[0, 3, 6, 9, 12]}
-            color="var(--color-purple)"
-            valueFormatter={(v) => `$${v}M`}
-          />
+         <div className="card chart-card">
+  <h3 className="chart-card-title">Payroll Cost ($M) — 2024</h3>
+  <LineChart data={payrollCostTrend} />
+</div>
         </div>
       </div>
 

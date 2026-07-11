@@ -1,0 +1,231 @@
+.login-page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 900px) {
+  .login-page {
+    grid-template-columns: 1.1fr 1fr;
+  }
+}
+
+.login-hero {
+  background: radial-gradient(circle at 20% 20%, #101a33 0%, var(--bg-app) 60%);
+  border-right: 1px solid var(--border-subtle);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 48px;
+}
+
+.login-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: absolute;
+  top: 32px;
+  left: 40px;
+}
+
+.login-brand-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--accent-blue);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-brand-name {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.login-hero-copy h1 {
+  font-size: 40px;
+  line-height: 1.15;
+  margin: 0 0 16px;
+  font-weight: 700;
+}
+
+.login-hero-copy p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  max-width: 440px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.login-hero-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(140px, 1fr));
+  gap: 16px;
+  max-width: 460px;
+}
+
+.login-hero-stat {
+  padding: 18px;
+  color: var(--text-secondary);
+}
+
+.login-hero-stat-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 10px 0 2px;
+}
+
+.login-hero-stat-label {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.login-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+}
+
+.login-panel-inner {
+  width: 100%;
+  max-width: 420px;
+}
+
+.login-panel-inner h2 {
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.login-panel-subtitle {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin: 0 0 24px;
+}
+
+.login-role-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 4px;
+  gap: 4px;
+  margin-bottom: 22px;
+}
+
+.login-role-tab {
+  border: none;
+  background: none;
+  color: var(--text-secondary);
+  padding: 9px 0;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.login-role-tab-active {
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
+  border: 1px solid var(--border-strong);
+}
+
+.login-auth-tabs {
+  display: flex;
+  gap: 20px;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 20px;
+}
+
+.login-auth-tab {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 0 0 10px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+
+.login-auth-tab-active {
+  color: var(--accent-blue);
+  border-bottom-color: var(--accent-blue);
+}
+
+.login-field-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0 0 8px;
+}
+
+.login-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  margin-bottom: 18px;
+  color: var(--text-muted);
+}
+
+.login-input:focus-within {
+  border-color: var(--accent-blue);
+}
+
+.login-input input {
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-size: 14px;
+  width: 100%;
+}
+.login-input input::placeholder {
+  color: var(--text-muted);
+}
+
+.login-input-eye {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  flex-shrink: 0;
+}
+.login-input-eye:hover {
+  color: var(--text-primary);
+}
+
+.login-forgot-link {
+  display: block;
+  text-align: right;
+  font-size: 13px;
+  color: var(--accent-blue);
+  margin: -10px 0 20px;
+}
+.login-forgot-link:hover {
+  text-decoration: underline;
+}
+
+.login-otp-hint {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 0 0 20px;
+}
+
+.login-submit-btn {
+  width: 100%;
+  padding: 13px;
+  font-size: 15px;
+}

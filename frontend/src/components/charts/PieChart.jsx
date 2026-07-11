@@ -1,58 +1,71 @@
-/**
- * Simple pie chart with outside labels.
- * data: [{ dept, value, color }]
- */
-export default function PieChart({ data, size = 260 }) {
-  const total = data.reduce((sum, d) => sum + d.value, 0);
-  const cx = size / 2;
-  const cy = size / 2;
-  const r = size / 2 - 4;
+import {
+  PieChart as RePieChart,
+  Pie,
+  Cell,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
 
-  let cumulative = 0;
-  const slices = data.map((d) => {
-    const startAngle = (cumulative / total) * 2 * Math.PI - Math.PI / 2;
-    cumulative += d.value;
-    const endAngle = (cumulative / total) * 2 * Math.PI - Math.PI / 2;
+function CustomTooltip({ active, payload }) {
+  if (!active || !payload || !payload.length) return null;
 
-    const x1 = cx + r * Math.cos(startAngle);
-    const y1 = cy + r * Math.sin(startAngle);
-    const x2 = cx + r * Math.cos(endAngle);
-    const y2 = cy + r * Math.sin(endAngle);
-    const largeArc = endAngle - startAngle > Math.PI ? 1 : 0;
-
-    const midAngle = (startAngle + endAngle) / 2;
-    const labelR = r + 26;
-    const labelX = cx + labelR * Math.cos(midAngle);
-    const labelY = cy + labelR * Math.sin(midAngle);
-
-    return {
-      ...d,
-      path: `M ${cx} ${cy} L ${x1} ${y1} A ${r} ${r} 0 ${largeArc} 1 ${x2} ${y2} Z`,
-      labelX,
-      labelY,
-      anchor: Math.cos(midAngle) > 0.15 ? "start" : Math.cos(midAngle) < -0.15 ? "end" : "middle",
-    };
-  });
+  const data = payload[0].payload;
 
   return (
-    <svg viewBox={`0 0 ${size + 120} ${size + 20}`} className="piechart-svg">
-      <g transform={`translate(60, 10)`}>
-        {slices.map((s) => (
-          <path key={s.dept} d={s.path} fill={s.color} className="piechart-slice" />
-        ))}
-        {slices.map((s) => (
-          <text
-            key={s.dept}
-            x={s.labelX}
-            y={s.labelY}
-            textAnchor={s.anchor}
-            className="piechart-label"
-            fill={s.color}
+    <div
+      style={{
+        background: "#1E293B",
+        border: "1px solid #334155",
+        borderRadius: "12px",
+        padding: "12px 16px",
+        color: "#fff",
+        boxShadow: "0 8px 20px rgba(0,0,0,.4)",
+      }}
+    >
+      <div
+        style={{
+          color: data.color,
+          fontWeight: 700,
+          marginBottom: 8,
+        }}
+      >
+        {data.dept}
+      </div>
+
+      <div>Employees : {data.value}</div>
+    </div>
+  );
+}
+
+export default function PieChart({ data }) {
+  return (
+    <div style={{ width: "100%", height: 330 }}>
+      <ResponsiveContainer>
+        <RePieChart>
+          <Pie
+            data={data}
+            dataKey="value"
+            nameKey="dept"
+            cx="50%"
+            cy="50%"
+            outerRadius={90}
+            label={({ dept, value }) => `${dept}: ${value}`}
+            labelLine={false}
+            activeOuterRadius={100}
           >
-            {s.dept}: {s.value}
-          </text>
-        ))}
-      </g>
-    </svg>
+            {data.map((entry) => (
+              <Cell
+                key={entry.dept}
+                fill={entry.color}
+                stroke="#fff"
+                strokeWidth={2}
+              />
+            ))}
+          </Pie>
+
+          <Tooltip content={<CustomTooltip />} />
+        </RePieChart>
+      </ResponsiveContainer>
+    </div>
   );
 }

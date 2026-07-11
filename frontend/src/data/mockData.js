@@ -49,6 +49,38 @@ export const employeeGrowth = [
     exits: 4,
   },
 ];
+export const payrollTrend = [
+  {
+    label: "Feb",
+    payroll: 8.8,
+    overhead: 1.2,
+  },
+  {
+    label: "Mar",
+    payroll: 9.2,
+    overhead: 1.3,
+  },
+  {
+    label: "Apr",
+    payroll: 9.6,
+    overhead: 1.5,
+  },
+  {
+    label: "May",
+    payroll: 10.1,
+    overhead: 1.7,
+  },
+  {
+    label: "Jun",
+    payroll: 10.5,
+    overhead: 1.8,
+  },
+  {
+    label: "Jul",
+    payroll: 10.9,
+    overhead: 2.0,
+  },
+];
 export const payrollCostTrend = [
   {
     label: "Feb",
@@ -82,6 +114,14 @@ export const payrollCostTrend = [
   },
 ];
 
+export const payrollReport = [
+  { label: "Feb", payroll: 9.8, overhead: 2.8 },
+  { label: "Mar", payroll: 10.2, overhead: 3.0 },
+  { label: "Apr", payroll: 10.4, overhead: 3.2 },
+  { label: "May", payroll: 10.6, overhead: 3.1 },
+  { label: "Jun", payroll: 10.8, overhead: 3.3 },
+  { label: "Jul", payroll: 11.0, overhead: 3.4 },
+];
 export const systemHealth = [
   { name: "API Server", uptime: "99.98%", latency: "45ms", status: "healthy" },
   { name: "Database", uptime: "99.99%", latency: "12ms", status: "healthy" },
@@ -129,9 +169,9 @@ export const reportTabs = ["Headcount", "Payroll", "Attendance", "Leave", "Perfo
 
 export const headcountGrowth = [
   { label: "Feb", value: 96 },
-  { label: "Mar", value: 99 },
-  { label: "Apr", value: 101 },
-  { label: "May", value: 106, highlight: true, tooltip: "Total : 106" },
+  { label: "Mar", value: 98 },
+  { label: "Apr", value: 100 },
+  { label: "May", value: 102 },
   { label: "Jun", value: 105 },
   { label: "Jul", value: 108 },
 ];
@@ -169,4 +209,103 @@ export const auditLogs = [
   { severity: "info", user: "System", action: "Backup completed", target: "Main database", timestamp: "2024-07-02 03:00" },
   { severity: "info", user: "Tom Walker", action: "Exported payroll report", target: "June 2024", timestamp: "2024-07-01 16:45" },
   { severity: "critical", user: "James Rodriguez", action: "Modified role permissions", target: "HR Manager role", timestamp: "2024-07-01 14:00" },
+];
+
+export const attendanceTrend = [
+  {
+    label: "Feb",
+    attendance: 18,
+    present: 18,
+    absent: 3,
+    late: 2,
+  },
+  {
+    label: "Mar",
+    attendance: 20,
+    present: 20,
+    absent: 2,
+    late: 3,
+  },
+  {
+    label: "Apr",
+    attendance: 19,
+    present: 19,
+    absent: 4,
+    late: 2,
+  },
+  {
+    label: "May",
+    attendance: 22,
+    present: 22,
+    absent: 1,
+    late: 2,
+  },
+  {
+    label: "Jun",
+    attendance: 23,
+    present: 23,
+    absent: 2,
+    late: 1,
+  },
+  {
+    label: "Jul",
+    attendance: 24,
+    present: 24,
+    absent: 1,
+    late: 2,
+  },
+];
+export const leaveTrend = [
+  {
+    label: "Engineering",
+    leave: 92,
+    annual: 55,
+    sick: 18,
+    personal: 19,
+  },
+  {
+    label: "Design",
+    leave: 76,
+    annual: 42,
+    sick: 15,
+    personal: 19,
+  },
+  {
+    label: "Marketing",
+    leave: 84,
+    annual: 46,
+    sick: 17,
+    personal: 21,
+  },
+  {
+    label: "Sales",
+    leave: 68,
+    annual: 36,
+    sick: 14,
+    personal: 18,
+  },
+  {
+    label: "HR",
+    leave: 58,
+    annual: 31,
+    sick: 10,
+    personal: 17,
+  },
+];
+
+export const ratingDistribution = [
+  { label: "5.0", rating: 12 },
+  { label: "4.5", rating: 34 },
+  { label: "4.0", rating: 28 },
+  { label: "3.5", rating: 18 },
+  { label: "3.0", rating: 8 },
+  { label: "<3", rating: 4 },
+];
+
+export const avgScores = [
+  { category: "Code Quality", score: 88 },
+  { category: "Delivery", score: 92 },
+  { category: "Teamwork", score: 85 },
+  { category: "Innovation", score: 78 },
+  { category: "Communication", score: 90 },
 ];

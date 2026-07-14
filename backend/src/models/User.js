@@ -57,11 +57,10 @@ userSchema.index({ role: 1 });
 userSchema.index({ department: 1 });
 
 // Hash password whenever it's set/changed
-userSchema.pre('save', async function (next) {
-  if (!this.isModified('passwordHash')) return next();
+userSchema.pre('save', async function () {
+  if (!this.isModified('passwordHash')) return;
   const salt = await bcrypt.genSalt(10);
   this.passwordHash = await bcrypt.hash(this.passwordHash, salt);
-  next();
 });
 
 userSchema.methods.comparePassword = function (candidatePassword) {

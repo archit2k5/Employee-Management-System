@@ -24,3 +24,14 @@ export const verifyJWT = asyncHandler(async (req, _res, next) => {
     throw new ApiError(401, 'User not found or inactive');
   }
 
+  req.user = user;
+  next();
+});
+
+// Usage: router.get('/admin/x', verifyJWT, requireRole('admin'), handler)
+export const requireRole = (...allowedRoles) => (req, _res, next) => {
+  if (!req.user || !allowedRoles.includes(req.user.role)) {
+    throw new ApiError(403, 'You do not have permission to perform this action');
+  }
+  next();
+};

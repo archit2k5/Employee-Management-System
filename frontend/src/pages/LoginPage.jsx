@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Icon } from "../components/common/Icons";
+import { useAuth, ROLE_TO_PATH } from "../context/AuthContext";
 import "./LoginPage.css";
 
 const roleTabs = ["Employee", "HR", "Admin"];
@@ -15,17 +16,36 @@ const heroStats = [
 
 export default function LoginPage() {
   const navigate = useNavigate();
+  const { login } = useAuth();
   const [role, setRole] = useState("Admin");
   const [authMode, setAuthMode] = useState("Password");
-  const [email, setEmail] = useState("j.rodriguez@nexus.io");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    // TODO: wire up real auth call
-    if (role === "Admin") {
-      navigate("/admin/analytics");
+    setError("");
+
+    if (authMode !== "Password") {
+      setError("OTP login isn't wired up in the UI yet — use Password for now.");
+      return;
+    }
+
+    setSubmitting(true);
+    try {
+      const loggedInUser = await login({
+        email,
+        password,
+        role: role.toLowerCase(),
+      });
+      navigate(ROLE_TO_PATH[loggedInUser.role] || "/login");
+    } catch (err) {
+      setError(err.message || "Login failed. Check your credentials and try again.");
+    } finally {
+      setSubmitting(false);
     }
   }
 
@@ -133,8 +153,10 @@ export default function LoginPage() {
               <p className="login-otp-hint">We'll send a one-time code to your email.</p>
             )}
 
-            <button type="submit" className="btn btn-primary login-submit-btn">
-              Sign in
+            {error && <p className="login-error" style={{ color: "#f87171", marginTop: "8px" }}>{error}</p>}
+
+            <button type="submit" className="btn btn-primary login-submit-btn" disabled={submitting}>
+              {submitting ? "Signing in..." : "Sign in"}
             </button>
           </form>
         </div>

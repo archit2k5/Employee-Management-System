@@ -1,8 +1,21 @@
+import { useNavigate } from "react-router-dom";
 import { Icon } from "../common/Icons";
-import { currentAdmin } from "../../data/mockData";
+import { useAuth } from "../../context/AuthContext";
 import "./Topbar.css";
 
 export default function Topbar() {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const initials = user?.name
+    ? user.name.split(" ").map((n) => n[0]).join("").slice(0, 2).toUpperCase()
+    : "?";
+
+  function handleLogout() {
+    logout();
+    navigate("/login");
+  }
+
   return (
     <header className="topbar">
       <div className="topbar-search">
@@ -18,12 +31,20 @@ export default function Topbar() {
           <Icon.Bell size={18} />
         </button>
         <div className="topbar-profile">
-          <div className="topbar-avatar">{currentAdmin.initials}</div>
+          <div className="topbar-avatar">{initials}</div>
           <div className="topbar-profile-text">
-            <div className="topbar-profile-name">{currentAdmin.name}</div>
-            <div className="topbar-profile-role">{currentAdmin.role}</div>
+            <div className="topbar-profile-name">{user?.name || "Unknown"}</div>
+            <div className="topbar-profile-role">{user?.role || ""}</div>
           </div>
         </div>
+        <button
+          className="topbar-icon-btn"
+          aria-label="Log out"
+          onClick={handleLogout}
+          title="Log out"
+        >
+          <Icon.LogOut size={18} />
+        </button>
       </div>
     </header>
   );
